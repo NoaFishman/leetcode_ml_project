@@ -1,6 +1,6 @@
 PS C:\Users\97252\Visual Studio Projects\Leetcode_ML_project> python ./ml_models.py
-2025-07-01 11:55:28.063751: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-2025-07-01 11:55:38.200481: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-07-01 16:05:26.793720: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-07-01 16:05:28.122823: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
 ----------- Linear Regression:
 likes - Linear Regression Evaluation:
 MAE: 409.73
@@ -268,3 +268,4 @@ the minimum depth is the number of nodes along the sho...
 🔮 Predicted (XGBoost): Tree
 
 ✅ Training and evaluation completed. Models and thresholds saved.
+PS C:\Users\97252\Visual Studio Projects\Leetcode_ML_project>

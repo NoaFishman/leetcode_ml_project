@@ -619,9 +619,9 @@ def difficulty_classification(df, top_in_tfidf, related_topics, nn_result):
     X = pd.concat([X, df[related_topics]], axis=1)
     y = df["difficulty"]
 
-    # Handling Class Imbalance
-    smote = SMOTE(random_state=42)
-    X, y = smote.fit_resample(X, y)
+    # # Handling Class Imbalance
+    # smote = SMOTE(random_state=42)
+    # X, y = smote.fit_resample(X, y)
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
@@ -894,9 +894,9 @@ def difficulty_classification_nn(df, top_in_tfidf, related_topics, seed=42):
     X = pd.concat([X, df[related_topics]], axis=1)
     y = df["difficulty"]
 
-    # Handling Class Imbalance
-    smote = SMOTE(random_state=seed)
-    X, y = smote.fit_resample(X, y)
+    # # Handling Class Imbalance
+    # smote = SMOTE(random_state=seed)
+    # X, y = smote.fit_resample(X, y)
 
     # Scale features
     scaler = StandardScaler()
@@ -1056,8 +1056,7 @@ def difficulty_classification_nn(df, top_in_tfidf, related_topics, seed=42):
 
 
 if __name__ == '__main__':
-    json_url = 'https://raw.githubusercontent.com/NoaFishman/leetcode_ml_project/refs/heads/main/data_files/encoding_metadata.json'
-    with open(json_url, "r") as f:
+    with open('data_files/encoding_metadata.json', "r") as f:
         encoding_metadata = json.load(f)
 
     metrics_dict_likes = {}
