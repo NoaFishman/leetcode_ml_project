@@ -5,11 +5,48 @@ from sklearn.preprocessing import MultiLabelBinarizer, LabelEncoder
 from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
 import spacy
+import matplotlib.pyplot as plt
+
+
+def balance_graph_distrution(difficulty_counts, name):
+
+    color_map = {
+        'Easy': '#A6CDC6',
+        'Medium': '#3B6790',
+        'Hard': '#DDA853'
+    }
+
+    labels = difficulty_counts.index
+    colors = [color_map[label] for label in labels]
+
+    # Create pie chart with custom colors
+    plt.figure(figsize=(6, 6))
+    wedges, texts, autotexts = plt.pie(
+        difficulty_counts,
+        labels=None,  # Leave labels off the pie slices
+        autopct='%1.1f%%',
+        startangle=140,
+        colors=colors
+    )
+    plt.legend(
+        wedges,
+        [f"{label} ({difficulty_counts[label]})" for label in labels],
+        title="Difficulty Level",
+        loc="center left",
+        bbox_to_anchor=(1, 0.5)
+    )
+    plt.title('Distribution of Problems by Difficulty Level')
+    plt.axis('equal')  # Makes the pie chart a circle
+    plt.tight_layout() 
+    # plt.show()
+    plt.savefig(f"{name}.jpg")
+
 
 def data_balancing(df):
    
     difficulty_counts = df['difficulty'].value_counts()
     print("Original class distribution:\n", difficulty_counts)
+    balance_graph_distrution(difficulty_counts, "plots/original_difficulty_distribution")
 
     # Step 1: Find the minimum count among the classes
     min_count = difficulty_counts.min()
@@ -22,7 +59,9 @@ def data_balancing(df):
     )
     
     # Step 3: Check new distribution
-    print("Balanced class distribution:\n", df_balanced['difficulty'].value_counts())
+    balanced_difficulty_counts = df_balanced['difficulty'].value_counts()
+    print("Balanced class distribution:\n", balanced_difficulty_counts)
+    balance_graph_distrution(balanced_difficulty_counts, "plots/balanced_difficulty_distribution")
     
     # Step 4: Save the balanced DataFrame to a CSV file
     df_balanced.to_csv('data_files/balanced_data.csv', index=False)

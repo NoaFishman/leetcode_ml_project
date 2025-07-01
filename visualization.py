@@ -43,8 +43,25 @@ labels = [f"{i}-{i+5}%" for i in bins[:-1]]
 df["acceptance_rate_bin"] = pd.cut(df["acceptance_rate"], bins=bins, labels=labels, right=False)
 
 # Plot the histogram (count plot) of difficulty grouped by acceptance rate bins
+difficulty_color_map = {
+    'Easy': '#A6CDC6',
+    'Medium': '#3B6790',
+    'Hard': '#DDA853'
+}
+
+# Create a list of colors in the same order as the hue categories appear
+# If you want to be safe regardless of sorting:
+difficulty_order = df['difficulty'].dropna().unique()  # or ['Easy', 'Medium', 'Hard'] if you want fixed order
+palette = [difficulty_color_map[d] for d in difficulty_order]
+
+# Plot
 plt.figure(figsize=(12, 6))
-sns.countplot(data=df, x="acceptance_rate_bin", hue="difficulty", palette=["#A6CDC6", "#DDA853", "#3B6790"])
+sns.countplot(
+    data=df,
+    x="acceptance_rate_bin",
+    hue="difficulty",
+    palette=difficulty_color_map  # seaborn will automatically map by label
+)
 
 # Labels and title
 plt.xlabel("Acceptance Rate (%)")
@@ -70,17 +87,24 @@ labels = [f"{i}-{i+5}%" for i in bins[:-1]]
 df["acceptance_rate_bin"] = pd.cut(df["acceptance_rate"], bins=bins, labels=labels, right=False)
 
 # Define difficulty levels and colors
-difficulty_levels = ["Easy", "Medium", "Hard"]
-colors = ["#A6CDC6", "#DDA853", "#3B6790"]
+difficulty_color_map = {
+    'Easy': '#A6CDC6',
+    'Medium': '#3B6790',
+    'Hard': '#DDA853'
+}
 
-# Create separate histograms for each difficulty level
+# Ensure consistent order
+difficulty_levels = ["Easy", "Medium", "Hard"]
+
+# Create subplots
 fig, axes = plt.subplots(3, 1, figsize=(12, 12), sharex=True)
 
+# Plot each difficulty level with its corresponding color
 for i, difficulty in enumerate(difficulty_levels):
     sns.countplot(
         data=df[df["difficulty"] == difficulty],
         x="acceptance_rate_bin",
-        color=colors[i],
+        color=difficulty_color_map[difficulty],
         ax=axes[i]
     )
     axes[i].set_title(f"{difficulty} Problems")
@@ -88,7 +112,7 @@ for i, difficulty in enumerate(difficulty_levels):
     axes[i].set_xlabel("")
     axes[i].tick_params(axis="x", rotation=45)
 
-# Set common x-axis label
+# Common x-axis label
 axes[-1].set_xlabel("Acceptance Rate (%)")
 
 # Adjust layout and show plot
@@ -106,9 +130,25 @@ labels = [f"{i}-{i+50}" for i in bins[:-1]]
 # Add a new column for acceptance rate bins
 df["discuss_count_bin"] = pd.cut(df["discuss_count"], bins=bins, labels=labels, right=False)
 
-# Plot the histogram (count plot) of difficulty grouped by acceptance rate bins
+difficulty_color_map = {
+    'Easy': '#A6CDC6',
+    'Medium': '#3B6790',
+    'Hard': '#DDA853'
+}
+
+# Create a list of colors in the same order as the hue categories appear
+# If you want to be safe regardless of sorting:
+difficulty_order = df['difficulty'].dropna().unique()  # or ['Easy', 'Medium', 'Hard'] if you want fixed order
+palette = [difficulty_color_map[d] for d in difficulty_order]
+
+# Plot
 plt.figure(figsize=(12, 6))
-sns.countplot(data=df, x="discuss_count_bin", hue="difficulty", palette=["#A6CDC6", "#DDA853", "#3B6790"])
+sns.countplot(
+    data=df,
+    x="discuss_count_bin",
+    hue="difficulty",
+    palette=difficulty_color_map  # seaborn will automatically map by label
+)
 
 # Labels and title
 plt.xlabel("Discuss Count")
@@ -135,17 +175,23 @@ labels = [f"{i}-{i+50}" for i in bins[:-1]]
 df["discuss_count_bin"] = pd.cut(df["discuss_count"], bins=bins, labels=labels, right=False)
 
 # Define difficulty levels and colors
-difficulty_levels = ["Easy", "Medium", "Hard"]
-colors = ["#A6CDC6", "#DDA853", "#3B6790"]
+difficulty_color_map = {
+    'Easy': '#A6CDC6',
+    'Medium': '#3B6790',
+    'Hard': '#DDA853'
+}
 
-# Create separate histograms for each difficulty level
+# Ensure consistent order
+difficulty_levels = ["Easy", "Medium", "Hard"]
+
+# Create subplots
 fig, axes = plt.subplots(3, 1, figsize=(12, 12), sharex=True)
 
 for i, difficulty in enumerate(difficulty_levels):
     sns.countplot(
         data=df[df["difficulty"] == difficulty],
         x="discuss_count_bin",
-        color=colors[i],
+        color=difficulty_color_map[difficulty],
         ax=axes[i]
     )
     axes[i].set_title(f"{difficulty} Problems")
@@ -217,8 +263,24 @@ df = df[df["companies"].isin(top_companies)]
 company_difficulty_counts = df.groupby(["companies", "difficulty"]).size().unstack(fill_value=0)
 
 # Plot the histogram as a stacked bar chart
-palette = ["#A6CDC6", "#3B6790", "#DDA853"]
-company_difficulty_counts.plot(kind="bar", color=palette, figsize=(12, 6))
+difficulty_color_map = {
+    'Easy': '#A6CDC6',
+    'Medium': '#3B6790',
+    'Hard': '#DDA853'
+}
+
+# Reorder columns to match desired difficulty order (optional but recommended)
+difficulty_levels = ["Easy", "Medium", "Hard"]
+company_difficulty_counts = company_difficulty_counts[difficulty_levels]
+
+# Plot as stacked bar chart using named color map
+company_difficulty_counts.plot(
+    kind="bar",
+    color=[difficulty_color_map[d] for d in company_difficulty_counts.columns],
+    figsize=(12, 6),
+    width=0.8,
+    stacked=False
+)
 
 # Labels and title
 plt.xlabel("Company")
@@ -250,8 +312,24 @@ df = df[df["related_topics"].isin(top_related_topics)]
 related_topics_difficulty_counts = df.groupby(["related_topics", "difficulty"]).size().unstack(fill_value=0)
 
 # Plot the histogram as a stacked bar chart
-palette = ["#A6CDC6", "#3B6790", "#DDA853"]
-related_topics_difficulty_counts.plot(kind="bar", color=palette, figsize=(12, 6), width=0.9)
+difficulty_color_map = {
+    'Easy': '#A6CDC6',
+    'Medium': '#3B6790',
+    'Hard': '#DDA853'
+}
+
+# Ensure consistent column order
+difficulty_levels = ["Easy", "Medium", "Hard"]
+related_topics_difficulty_counts = related_topics_difficulty_counts[difficulty_levels]
+
+# Plot side-by-side bars (NOT stacked)
+related_topics_difficulty_counts.plot(
+    kind="bar",
+    color=[difficulty_color_map[d] for d in related_topics_difficulty_counts.columns],
+    figsize=(14, 6),
+    width=0.8,   # Adjust for spacing
+    stacked=False
+)
 
 # Labels and title
 plt.xlabel("Related Topics")
