@@ -485,8 +485,8 @@ plt.figure(figsize=(14, 8))  # Increase figure size for better spacing
 bar_width = 0.25  # Set the bar width smaller to avoid overlap
 
 plt.bar(x - bar_width, easy_counts, bar_width, label="Easy", color='#A6CDC6')
-plt.bar(x, medium_counts, bar_width, label="Medium", color='#DDA853')
-plt.bar(x + bar_width, hard_counts, bar_width, label="Hard", color='#3B6790')
+plt.bar(x, medium_counts, bar_width, label="Medium", color='#3B6790')
+plt.bar(x + bar_width, hard_counts, bar_width, label="Hard", color='#DDA853')
 
 plt.xlabel("Words")
 plt.ylabel("Count")
