@@ -1,0 +1,270 @@
+PS C:\Users\97252\Visual Studio Projects\Leetcode_ML_project> python ./ml_models.py
+2025-07-01 11:55:28.063751: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-07-01 11:55:38.200481: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+----------- Linear Regression:
+likes - Linear Regression Evaluation:
+MAE: 409.73
+MSE: 434809.38
+RMSE: 659.40
+dislikes - Linear Regression Evaluation:
+MAE: 323.21
+MSE: 245802.83
+RMSE: 495.79
+
+-----------  Random Forest:
+✅ likes_random_forest_regression_model.pkl was saved successfully.
+
+likes - Random Forest Evaluation:
+MAE: 274.48
+MSE: 324899.30
+RMSE: 570.00
+dislikes - Random Forest Evaluation:
+MAE: 239.13
+MSE: 200009.28
+RMSE: 447.22
+
+----------- Gradient Boosting:
+Gradient Boosting Evaluation:
+MAE: 266.39
+MSE: 282125.27
+RMSE: 531.15
+Gradient Boosting Evaluation:
+MAE: 262.15
+MSE: 251569.48
+RMSE: 501.57
+
+----------- XGBoost:
+XGBoost Evaluation:
+MAE: 265.37
+MSE: 278196.97
+RMSE: 527.44
+✅ dislikes_XGB_regression_model.pkl was saved successfully.
+
+XGBoost Evaluation:
+MAE: 249.55
+MSE: 221592.78
+RMSE: 470.74
+
+🔥 Best model for likes is XGBoost
+
+🔥 Best model for dislikes is random_forest
+✅ accepted_submissions_regression_model.pkl was saved successfully.
+
+Mean Absolute Error (MAE): 24962.692992852033
+Mean Squared Error (MSE): 3317810751.0626826
+R-squared Score (R²): 0.9204383121962437
+C:\Users\97252\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\optim\lr_scheduler.py:60: UserWarning: The verbose parameter is deprecated. Please use get_last_lr() to access the learning rate.
+  warnings.warn(
+
+Training Neural Network...
+Epoch 10/100
+Train Loss: 0.7990, Train Acc: 64.68%
+Val Loss: 0.8552, Val Acc: 58.92%
+Epoch 20/100
+Train Loss: 0.5726, Train Acc: 76.45%
+Val Loss: 0.9662, Val Acc: 58.38%
+Early stopping triggered
+
+Final Test Accuracy: 57.14%
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.66      0.70      0.68        81
+           1       0.66      0.62      0.64        77
+           2       0.38      0.37      0.37        73
+
+    accuracy                           0.57       231
+   macro avg       0.57      0.57      0.57       231
+weighted avg       0.57      0.57      0.57       231
+
+
+Training Logistic Regression...
+Logistic Regression - Accuracy: 58.01%
+              precision    recall  f1-score   support
+
+           0       0.73      0.80      0.76        81
+           1       0.59      0.58      0.59        77
+           2       0.36      0.33      0.35        73
+
+    accuracy                           0.58       231
+   macro avg       0.56      0.57      0.57       231
+weighted avg       0.57      0.58      0.57       231
+
+
+Training Random Forest...
+Random Forest - Accuracy: 59.74%
+              precision    recall  f1-score   support
+
+           0       0.63      0.67      0.65        81
+           1       0.71      0.73      0.72        77
+           2       0.42      0.38      0.40        73
+
+    accuracy                           0.60       231
+   macro avg       0.59      0.59      0.59       231
+weighted avg       0.59      0.60      0.59       231
+
+
+Training SVM...
+SVM - Accuracy: 58.44%
+              precision    recall  f1-score   support
+
+           0       0.66      0.73      0.69        81
+           1       0.65      0.65      0.65        77
+           2       0.40      0.36      0.38        73
+
+    accuracy                           0.58       231
+   macro avg       0.57      0.58      0.57       231
+weighted avg       0.58      0.58      0.58       231
+
+
+Training KNN...
+KNN - Accuracy: 47.19%
+              precision    recall  f1-score   support
+
+           0       0.48      0.72      0.58        81
+           1       0.49      0.45      0.47        77
+           2       0.40      0.22      0.28        73
+
+    accuracy                           0.47       231
+   macro avg       0.46      0.46      0.44       231
+weighted avg       0.46      0.47      0.45       231
+
+
+Training Gradient Boosting...
+Gradient Boosting - Accuracy: 61.47%
+              precision    recall  f1-score   support
+
+           0       0.72      0.65      0.68        81
+           1       0.68      0.73      0.70        77
+           2       0.44      0.45      0.45        73
+
+    accuracy                           0.61       231
+   macro avg       0.61      0.61      0.61       231
+weighted avg       0.62      0.61      0.62       231
+
+
+Training XGBoost...
+XGBoost - Accuracy: 61.90%
+              precision    recall  f1-score   support
+
+           0       0.70      0.67      0.68        81
+           1       0.71      0.70      0.71        77
+           2       0.45      0.48      0.46        73
+
+    accuracy                           0.62       231
+   macro avg       0.62      0.62      0.62       231
+weighted avg       0.62      0.62      0.62       231
+
+
+🏆 Best Model: XGBoost - Accuracy: 61.90%
+✅ Best trained model saved as level_classifier_model.pkl
+Loading and preprocessing data...
+
+✅ Found 42 unique topics.
+
+⏳ Training SVM model...
+Finding optimal thresholds for SVM...
+
+⏳ Training Logistic_Regression model...
+Finding optimal thresholds for Logistic_Regression...
+
+⏳ Training Random_Forest model...
+Finding optimal thresholds for Random_Forest...
+
+⏳ Training KNN model...
+Finding optimal thresholds for KNN...
+
+⏳ Training Gradient_Boosting model...
+Finding optimal thresholds for Gradient_Boosting...
+
+⏳ Training XGBoost model...
+Finding optimal thresholds for XGBoost...
+
+Selecting best model...
+
+🏆 Model Comparison Results:
+
+📊 Detailed Metrics and Rankings:
+------------------------------------------------------------------------------------------------------------------------
+Model                    Precision    Recall      F1 Score   Subset Acc Hamming Acc  Jaccard    Avg Rank
+------------------------------------------------------------------------------------------------------------------------
+SVM                        0.369       0.427       0.369       0.071       0.942       0.280     2.83
+Logistic_Regression        0.381       0.266       0.287       0.146       0.958       0.253     3.17
+Random_Forest              0.383       0.361       0.355       0.121       0.949       0.268     2.50
+KNN                        0.298       0.403       0.325       0.020       0.916       0.201     4.83
+Gradient_Boosting          0.347       0.337       0.336       0.096       0.949       0.249     3.83
+XGBoost                    0.413       0.170       0.214       0.111       0.963       0.181     3.83
+------------------------------------------------------------------------------------------------------------------------
+
+🎯 Final Model Rankings (based on average performance across all metrics):
+1. Random_Forest        (Average Rank: 2.50)
+2. SVM                  (Average Rank: 2.83)
+3. Logistic_Regression  (Average Rank: 3.17)
+4. Gradient_Boosting    (Average Rank: 3.83)
+5. XGBoost              (Average Rank: 3.83)
+6. KNN                  (Average Rank: 4.83)
+
+🥇 Best Overall Model: Random_Forest
+
+📌 Detailed strengths of the best model:
+   - Precision: 0.383
+   - Recall: 0.361
+   - F1 Score: 0.355
+   - Subset Accuracy: 0.121
+   - Hamming Accuracy: 0.949
+   - Jaccard Score: 0.268
+✅ Best trained model saved as best_related_topics_model.pkl
+
+📌 Sample Predictions with Optimized Thresholds:
+
+Description: given a 2d integer array `matrix`, return the transpose of `matrix`.
+
+the transpose of a matrix is t...
+✅ True Topics: Array
+🔮 Predicted (SVM): Array, Greedy
+🔮 Predicted (Logistic_Regression): Array
+🔮 Predicted (Random_Forest): Array, Queue
+🔮 Predicted (KNN): Array, Binary Search, Dynamic Programming, Hash Table, Queue
+🔮 Predicted (Gradient_Boosting): Array
+🔮 Predicted (XGBoost): Array
+
+Description: there is a new alien language that uses the english alphabet. however, the order among the letters i...
+✅ True Topics: Graph, Topological Sort
+🔮 Predicted (SVM): Hash Table
+🔮 Predicted (Logistic_Regression): Hash Table, String
+🔮 Predicted (Random_Forest): Greedy, String
+🔮 Predicted (KNN): Hash Table, String, Trie
+🔮 Predicted (Gradient_Boosting): Hash Table, String, Trie
+🔮 Predicted (XGBoost): Hash Table
+
+Description: given a wooden stick of length `n` units. the stick is labelled from `0` to `n`. for example, a stic...
+✅ True Topics: Dynamic Programming
+🔮 Predicted (SVM): Dynamic Programming, Greedy
+🔮 Predicted (Logistic_Regression): Dynamic Programming
+🔮 Predicted (Random_Forest): Dynamic Programming
+🔮 Predicted (KNN): Dynamic Programming, Graph, Greedy
+🔮 Predicted (Gradient_Boosting): Graph
+🔮 Predicted (XGBoost): None
+
+Description: given a positive integer n, find the number of non-negative integers less than or equal to n, whose ...
+✅ True Topics: Dynamic Programming
+🔮 Predicted (SVM): Array, Greedy, Math
+🔮 Predicted (Logistic_Regression): Array, Math
+🔮 Predicted (Random_Forest): Math
+🔮 Predicted (KNN): Array, Backtracking, Binary Search
+🔮 Predicted (Gradient_Boosting): Array
+🔮 Predicted (XGBoost): None
+
+Description: given a binary tree, find its minimum depth.
+
+the minimum depth is the number of nodes along the sho...
+✅ True Topics: Breadth-first Search, Depth-first Search, Tree
+🔮 Predicted (SVM): Breadth-first Search, Depth-first Search, Tree
+🔮 Predicted (Logistic_Regression): Breadth-first Search, Depth-first Search, Tree
+🔮 Predicted (Random_Forest): Breadth-first Search, Depth-first Search, Tree
+🔮 Predicted (KNN): Breadth-first Search, Depth-first Search, Tree
+🔮 Predicted (Gradient_Boosting): Breadth-first Search, Depth-first Search, Tree
+🔮 Predicted (XGBoost): Tree
+
+✅ Training and evaluation completed. Models and thresholds saved.
