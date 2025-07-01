@@ -13,7 +13,6 @@ from sklearn.metrics import classification_report
 from sklearn.pipeline import make_pipeline
 from xgboost import XGBClassifier
 from sklearn.preprocessing import StandardScaler
-from imblearn.over_sampling import SMOTE
 from sklearn.base import BaseEstimator, ClassifierMixin
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 import pandas as pd
@@ -619,10 +618,6 @@ def difficulty_classification(df, top_in_tfidf, related_topics, nn_result):
     X = pd.concat([X, df[related_topics]], axis=1)
     y = df["difficulty"]
 
-    # # Handling Class Imbalance
-    # smote = SMOTE(random_state=42)
-    # X, y = smote.fit_resample(X, y)
-
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     # Define Classifiers with Hyperparameter Tuning
@@ -893,10 +888,6 @@ def difficulty_classification_nn(df, top_in_tfidf, related_topics, seed=42):
     X = pd.concat([X, df[top_in_tfidf]], axis=1)
     X = pd.concat([X, df[related_topics]], axis=1)
     y = df["difficulty"]
-
-    # # Handling Class Imbalance
-    # smote = SMOTE(random_state=seed)
-    # X, y = smote.fit_resample(X, y)
 
     # Scale features
     scaler = StandardScaler()
