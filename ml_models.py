@@ -227,7 +227,8 @@ def related_topics_prediction():
 
     # Load and preprocess data
     print("Loading and preprocessing data...")
-    df = pd.read_csv("data_files/balanced_data.csv")
+    url = 'https://raw.githubusercontent.com/NoaFishman/leetcode_ml_project/refs/heads/main/data_files/balanced_data.csv'
+    df = pd.read_csv(url)
     df = df.dropna(subset=['related_topics'])
     df['description'] = df['description'].str.lower().fillna('')
     df['related_topics'] = df['related_topics'].apply(lambda x: x.split(',') if isinstance(x, str) else [])
@@ -1055,9 +1056,8 @@ def difficulty_classification_nn(df, top_in_tfidf, related_topics, seed=42):
 
 
 if __name__ == '__main__':
-    file_path = "data_files/data_with_numerical_encodings.csv"
-
-    with open("data_files/encoding_metadata.json", "r") as f:
+    json_url = 'https://raw.githubusercontent.com/NoaFishman/leetcode_ml_project/refs/heads/main/data_files/encoding_metadata.json'
+    with open(json_url, "r") as f:
         encoding_metadata = json.load(f)
 
     metrics_dict_likes = {}
@@ -1069,7 +1069,7 @@ if __name__ == '__main__':
     top_in_tfidf_columns = [col for col in encoding_metadata["top_words"] if col != ""]
 
     # Load preprocessed data and train the model
-    prepared_data_path = "data_files/data_with_numerical_encodings.csv"
+    prepared_data_path = 'https://raw.githubusercontent.com/NoaFishman/leetcode_ml_project/refs/heads/main/data_files/data_with_numerical_encodings.csv'
     prepared_data = pd.read_csv(prepared_data_path)
 
     print("----------- Linear Regression:")

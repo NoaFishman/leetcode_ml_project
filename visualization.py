@@ -12,7 +12,7 @@ import spacy
 # _______________________
 
 # Load the CSV file
-file_path = "data_files/balanced_data.csv"
+file_path = "https://raw.githubusercontent.com/NoaFishman/leetcode_ml_project/refs/heads/main/data_files/balanced_data.csv"
 df = pd.read_csv(file_path)
 
 # Set plot style

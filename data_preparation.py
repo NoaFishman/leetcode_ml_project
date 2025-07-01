@@ -171,7 +171,7 @@ def data_preparation(df):
     return df
 
 
-url = 'https://raw.githubusercontent.com/NoaFishman/Machine-Learning-Project/refs/heads/main/data.csv'
+url = 'https://raw.githubusercontent.com/NoaFishman/leetcode_ml_project/refs/heads/main/data_files/data.csv'
 df = pd.read_csv(url)
 df = data_balancing(df)
 df = data_preparation(df)
